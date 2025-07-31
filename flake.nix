@@ -2,6 +2,11 @@
   description = ''''; # TODO
 
   inputs = {
+    spotify = {
+      url = "github:gerg-l/spicetify-nix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/hyprland/main";
 
     home-manager = {
