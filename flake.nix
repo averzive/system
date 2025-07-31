@@ -2,6 +2,8 @@
   description = ''''; # TODO
 
   inputs = {
+    hyprland.url = "github:hyprwm/hyprland/main";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
