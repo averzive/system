@@ -1,0 +1,55 @@
+{
+  hostname,
+  host,
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [./${hostname}];
+
+  environment.systemPackages = with pkgs; [
+    git
+    home-manager
+  ];
+
+  networking.hostName = hostname |> lib.mkDefault;
+
+  users.defaultUserShell = pkgs.zsh |> lib.mkOverride 999;
+  programs.zsh.enable = true |> lib.mkDefault;
+
+  users.users =
+    lib.genAttrs host.users
+    (username: user: {
+      isNormalUser = true |> lib.mkDefault;
+      initialPassword = "" |> lib.mkDefault;
+    });
+
+  nix.gc = {
+    automatic = true |> lib.mkDefault;
+    dates = "weekly" |> lib.mkDefault;
+  };
+
+  nix = {
+    channel.enable = false |> lib.mkDefault;
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"] |> lib.mkDefault;
+
+    settings = {
+      experimental-features = ["flakes" "nix-command" "pipe-operators"] |> lib.mkDefault;
+      auto-optimise-store = true |> lib.mkDefault;
+
+      flake-registry = "" |> lib.mkDefault;
+    };
+  };
+
+  nixpkgs.config.allowUnfree = true |> lib.mkDefault;
+
+  environment = {
+    variables = {
+      NIXPKGS_ALLOW_UNFREE = 1 |> lib.mkDefault;
+      NIXPKGS_ALLOW_INSECURE = 1 |> lib.mkDefault;
+    };
+  };
+
+  system.stateVersion = host.stateVersion |> lib.mkForce;
+}
