@@ -7,6 +7,8 @@
     "${system}/bootloader/grub"
 
     "${system}/hardware/networkmanager"
+    "${system}/hardware/pipewire"
+    "${system}/hardware/bluetooth"
 
     "${system}/services/firewall"
 
