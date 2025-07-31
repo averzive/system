@@ -8,6 +8,8 @@
 
     "${system}/hardware/networkmanager"
 
+    "${system}/services/firewall"
+
     "${system}/desktop/hyprland"
 
     ./hardware.nix
