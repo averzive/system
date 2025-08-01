@@ -1,6 +1,7 @@
 {
   system,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -29,4 +30,12 @@
 
   # kanata
   hardware.uinput.enable = true;
+
+  # tty1 autologin
+  systemd.services."getty@tty1" = let
+    user = "verz";
+  in {
+    overrideStrategy = "asDropin";
+    serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ${user} --noclear --keep-baud %I 115200,38400,9600 $TERM"];
+  };
 }
