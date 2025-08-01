@@ -5,13 +5,15 @@
   lib,
   config,
   ...
-}: let
+} @ _args: let
   moduleName = "hyprland";
+
+	args = _args // {inherit moduleName;};
 in {
   imports = [
-    ./config/general.nix
-    ./config/binds.nix
-    ./config/style.nix
+    (args |> import ./config/general.nix)
+    (args |> import ./config/binds.nix)
+    (args |> import ./config/style.nix)
   ];
 
   config = lib.mkIf config.${moduleName}.enableModule {
@@ -22,10 +24,6 @@ in {
       # inherit system packages
       package = null |> lib.mkDefault;
       portalPackage = null |> lib.mkDefault;
-    };
-
-    _module.args = {
-      inherit moduleName;
     };
   };
 
