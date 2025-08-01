@@ -19,6 +19,14 @@
 
   users.users.verz.extraGroups = [
     "networkmanager"
+
+    # kanata
+    "uinput"
+    "input"
+
     "wheel"
   ];
+
+  # kanata
+  hardware.uinput.enable = true;
 }
