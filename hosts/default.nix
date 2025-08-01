@@ -25,6 +25,8 @@
       initialPassword = "" |> lib.mkDefault;
     });
 
+	services.dbus.implementation = "broker" |> lib.mkDefault;
+
   nix.gc = {
     automatic = true |> lib.mkDefault;
     dates = "weekly" |> lib.mkDefault;
