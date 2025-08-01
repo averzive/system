@@ -8,7 +8,7 @@
 } @ _args: let
   moduleName = "hyprland";
 
-	args = _args // {inherit moduleName;};
+  args = _args // {inherit moduleName;};
 in {
   imports = [
     (args |> import ./config/general.nix)
