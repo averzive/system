@@ -3,6 +3,7 @@
     "${home}/services/kanata"
 
     "${home}/shell/zsh"
+    "${home}/shell/starship"
 
     "${home}/desktop/hyprland"
 
