@@ -11,6 +11,7 @@
     "${system}/hardware/pipewire"
     "${system}/hardware/bluetooth"
 
+    "${system}/services/polkit"
     "${system}/services/firewall"
 
     "${system}/desktop/hyprland"
@@ -38,4 +39,8 @@
     overrideStrategy = "asDropin";
     serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ${user} --noclear --keep-baud %I 115200,38400,9600 $TERM"];
   };
+
+  environment.systemPackages = [
+    pkgs.steam
+  ];
 }
