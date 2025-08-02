@@ -2,6 +2,8 @@
   imports = [
     "${home}/services/kanata"
 
+    "${home}/shell/zsh"
+
     "${home}/desktop/hyprland"
 
     "${home}/apps/kitty"
