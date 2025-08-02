@@ -8,9 +8,9 @@
 }: {
   imports = [./${hostname}];
 
-  environment.systemPackages = with pkgs; [
-    git
-    home-manager
+  environment.systemPackages = [
+    pkgs.git
+    inputs.home-manager.packages.${host.system}.default
   ];
 
   networking.hostName = hostname |> lib.mkDefault;
