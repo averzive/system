@@ -27,7 +27,7 @@ in {
 
       xwayland.enable = true |> lib.mkDefault;
 
-      #package = hyprPackages.hyprland |> lib.mkDefault;
+      package = hyprPackages.hyprland |> lib.mkDefault;
       portalPackage = hyprPackages.xdg-desktop-portal-hyprland |> lib.mkDefault;
     };
   };
