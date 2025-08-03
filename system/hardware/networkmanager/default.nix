@@ -4,8 +4,6 @@
   ...
 }: let
   moduleName = "networkmanager";
-
-  inherit (lib) mkForce;
 in {
   config = lib.mkIf config.${moduleName}.enableModule {
     networking.networkmanager = {

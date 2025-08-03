@@ -11,7 +11,6 @@ lib.mkIf config.${moduleName}.enableModule {
       [
         # --- desktop binds --- #
         "SUPER, X, killactive,"
-        "SUPER, P, global, acheron:panelToggle"
 
         "SUPER, RETURN, exec, uwsm app -- ${pkgs.kitty}/bin/kitty"
 
