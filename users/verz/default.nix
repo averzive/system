@@ -10,5 +10,8 @@
 
     "${home}/apps/kitty"
     "${home}/apps/spotify"
+    "${home}/apps/discord"
+
+    ./packages.nix
   ];
 }

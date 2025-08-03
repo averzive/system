@@ -2,8 +2,18 @@
   description = ''''; # TODO
 
   inputs = {
+    discord = {
+      url = "github:kaylorben/nixcord/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     spotify = {
       url = "github:gerg-l/spicetify-nix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    flow = {
+      url = "github:averzive/flow-browser-flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
