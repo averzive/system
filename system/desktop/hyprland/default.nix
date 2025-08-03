@@ -14,7 +14,10 @@ in {
     };
 
     programs.uwsm.enable = true |> lib.mkForce;
-    environment.sessionVariables.NIXOS_OZONE_WL = "1" |> lib.mkDefault;
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1" |> lib.mkDefault;
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland" |> lib.mkDefault;
+    };
 
     programs.hyprland = let
       hyprPackages = inputs.hyprland.packages.${host.system};
