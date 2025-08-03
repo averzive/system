@@ -10,7 +10,7 @@ in {
     (_args // {inherit moduleName;} |> import ./config.nix)
   ];
 
-  config = lib.mkIf config.${moduleName}.enableModule {
+  config = lib.mkIf config.modules.${moduleName}.enable {
     systemd.user.services.kanata = {
       Unit.Description = "Kanata, the keyboard remapper";
       Install.WantedBy = ["default.target"];
@@ -31,7 +31,7 @@ in {
     };
   };
 
-  options.${moduleName}.enableModule = lib.mkOption {
+  options.modules.${moduleName}.enable = lib.mkOption {
     description = "Enable the ${moduleName} module";
     default = true;
     type = lib.types.bool;

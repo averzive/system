@@ -5,7 +5,7 @@
   config,
   ...
 }:
-lib.mkIf config.${moduleName}.enableModule {
+lib.mkIf config.modules.${moduleName}.enable {
   wayland.windowManager.hyprland.settings = {
     bind = lib.mkDefault (
       [

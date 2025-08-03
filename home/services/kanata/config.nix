@@ -9,7 +9,7 @@
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 in
-  lib.mkIf config.${moduleName}.enableModule {
+  lib.mkIf config.modules.${moduleName}.enable {
     xdg.configFile."kanata/kanata.kbd".text = lib.mkDefault ''
       ;; link containing all keys and their definitions
       ;; https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs

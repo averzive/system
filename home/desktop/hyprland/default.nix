@@ -16,7 +16,7 @@ in {
     (args |> import ./config/style.nix)
   ];
 
-  config = lib.mkIf config.${moduleName}.enableModule {
+  config = lib.mkIf config.modules.${moduleName}.enable {
     wayland.windowManager.hyprland = {
       enable = true |> lib.mkForce;
       systemd.enable = false |> lib.mkForce; # avoid conflicts with uwsm
@@ -27,7 +27,7 @@ in {
     };
   };
 
-  options.${moduleName}.enableModule = lib.mkOption {
+  options.modules.${moduleName}.enable = lib.mkOption {
     description = "Enable the ${moduleName} module";
     default = true;
     type = lib.types.bool;

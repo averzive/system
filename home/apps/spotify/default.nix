@@ -12,7 +12,7 @@
 in {
   imports = [spotify.homeManagerModules.default];
 
-  config = lib.mkIf config.${moduleName}.enableModule {
+  config = lib.mkIf config.modules.${moduleName}.enable {
     programs.spicetify = let
       spicetifyPkgs = spotify.legacyPackages.${host.system};
     in {
@@ -39,7 +39,7 @@ in {
     };
   };
 
-  options.${moduleName}.enableModule = lib.mkOption {
+  options.modules.${moduleName}.enable = lib.mkOption {
     description = "Enable the ${moduleName} module";
     default = true;
     type = lib.types.bool;

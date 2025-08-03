@@ -5,7 +5,7 @@
 }: let
   moduleName = "pipewire";
 in {
-  config = lib.mkIf config.${moduleName}.enableModule {
+  config = lib.mkIf config.modules.${moduleName}.enable {
     services.pipewire = {
       enable = true |> lib.mkForce;
       audio.enable = true |> lib.mkDefault;
@@ -23,7 +23,7 @@ in {
     security.rtkit.enable = true |> lib.mkDefault;
   };
 
-  options.${moduleName}.enableModule = lib.mkOption {
+  options.modules.${moduleName}.enable = lib.mkOption {
     description = "Enable the ${moduleName} module";
     default = true;
     type = lib.types.bool;

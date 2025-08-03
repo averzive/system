@@ -6,7 +6,7 @@
 }: let
   moduleName = "grub";
 in {
-  config = lib.mkIf config.${moduleName}.enableModule {
+  config = lib.mkIf config.modules.${moduleName}.enable {
     boot.loader = {
       timeout = null |> lib.mkDefault;
       efi.canTouchEfiVariables = true |> lib.mkDefault;
@@ -40,7 +40,7 @@ in {
     };
   };
 
-  options.${moduleName}.enableModule = lib.mkOption {
+  options.modules.${moduleName}.enable = lib.mkOption {
     description = "Enable the ${moduleName} module";
     default = true;
     type = lib.types.bool;

@@ -4,7 +4,7 @@
   config,
   ...
 }:
-lib.mkIf config.${moduleName}.enableModule {
+lib.mkIf config.modules.${moduleName}.enable {
   wayland.windowManager.hyprland.settings = {
     general = {
       no_border_on_floating = false |> lib.mkDefault;

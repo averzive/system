@@ -5,7 +5,7 @@
   config,
   ...
 }:
-lib.mkIf config.${moduleName}.enableModule {
+lib.mkIf config.modules.${moduleName}.enable {
   wayland.windowManager.hyprland.settings = {
     monitor = lib.mkDefault [
       ",preferred,auto,1.2,transform, 0"

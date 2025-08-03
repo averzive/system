@@ -5,7 +5,7 @@
 }: let
   moduleName = "ssh";
 in {
-  config = lib.mkIf config.${moduleName}.enableModule {
+  config = lib.mkIf config.modules.${moduleName}.enable {
     services.openssh = {
       enable = true |> lib.mkForce;
       startWhenNeeded = true |> lib.mkDefault;
@@ -23,7 +23,7 @@ in {
     };
   };
 
-  options.${moduleName}.enableModule = lib.mkOption {
+  options.modules.${moduleName}.enable = lib.mkOption {
     description = "Enable the ${moduleName} module";
     default = true;
     type = lib.types.bool;

@@ -5,11 +5,11 @@
 }: let
   moduleName = "hyprpolkit";
 in {
-  config = lib.mkIf config.${moduleName}.enableModule {
+  config = lib.mkIf config.modules.${moduleName}.enable {
     services.hyprpolkitagent.enable = true |> lib.mkForce;
   };
 
-  options.${moduleName}.enableModule = lib.mkOption {
+  options.modules.${moduleName}.enable = lib.mkOption {
     description = "Enable the ${moduleName} module";
     default = true;
     type = lib.types.bool;
