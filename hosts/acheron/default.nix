@@ -11,6 +11,10 @@
     "${system}/hardware/pipewire"
     "${system}/hardware/bluetooth"
 
+    "${system}/hardware/graphics/opengl"
+    "${system}/hardware/graphics/nvidia"
+    "${system}/hardware/graphics/intel"
+
     "${system}/services/polkit"
     "${system}/services/firewall"
 
