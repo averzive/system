@@ -63,7 +63,7 @@ in
       	🔇 (tap-hold 0 300 (cmd ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle) (cmd ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle)) ;; toggle media mute when tapped, toggle mic mute when held
       	🔊 (tap-hold 0 300 (cmd ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 10%+ -l 1) (macro-repeat (cmd ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%+ -l 1) 10)) ;; increase volume by 10% when pressed, increase by 1% recursively when held
 
-      	🔅 (tap-hold 0 300 (cmd ${brightnessctl} 10%- -n 1) (macro-repeat (cmd ${brightnessctl} s 1%- -n 1) 10)) ;; decrease brightness by 10% when pressed, decrease by 1% recursively when held
+      	🔅 (tap-hold 0 300 (cmd ${brightnessctl} s 10%- -n 1) (macro-repeat (cmd ${brightnessctl} s 1%- -n 1) 10)) ;; decrease brightness by 10% when pressed, decrease by 1% recursively when held
       	🔆 (tap-hold 0 300 (cmd ${brightnessctl} s 10%+ -n 1) (macro-repeat (cmd ${brightnessctl} s 1%+ -n 1) 10)) ;; increase brightness by 10% when pressed, increase by 1% recursively when held
       )
 
