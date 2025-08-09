@@ -12,7 +12,7 @@ lib.mkIf config.modules.${moduleName}.enable {
         # --- desktop binds --- #
         "SUPER, X, killactive,"
 
-        "SUPER, RETURN, exec, uwsm app -- ${pkgs.kitty}/bin/kitty"
+        "SUPER, RETURN, exec, ${pkgs.app2unit}/bin/app2unit -- ${pkgs.kitty}/bin/kitty"
 
         # --- moving focus between windows --- #
         "SUPER, H, movefocus, l"

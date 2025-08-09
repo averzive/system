@@ -1,6 +1,7 @@
 {
   host,
   inputs,
+  pkgs,
   lib,
   config,
   ...
@@ -17,6 +18,8 @@ in {
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1" |> lib.mkDefault;
       ELECTRON_OZONE_PLATFORM_HINT = "wayland" |> lib.mkDefault;
+
+      APP2UNIT_SLICES = "a=app-graphical.slice b=background-graphical.slice s=session-graphical.slice" |> lib.mkDefault;
     };
 
     programs.hyprland = let
@@ -30,6 +33,10 @@ in {
       package = hyprPackages.hyprland |> lib.mkDefault;
       portalPackage = hyprPackages.xdg-desktop-portal-hyprland |> lib.mkDefault;
     };
+
+    environment.systemPackages = [
+      pkgs.app2unit
+    ];
   };
 
   options.modules.${moduleName}.enable = lib.mkOption {
