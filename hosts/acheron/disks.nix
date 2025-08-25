@@ -118,7 +118,7 @@ in {
               type = "swap";
 
               resumeDevice = true;
-              discardPolicy = "both";
+              discardPolicy = "once";
 
               extraArgs = ["-LSWAP"];
             };
