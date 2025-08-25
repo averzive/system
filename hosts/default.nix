@@ -6,7 +6,11 @@
   lib,
   ...
 }: {
-  imports = [./${hostname}];
+  imports = [
+    inputs.impermanence.nixosModules.default
+
+    ./${hostname}
+  ];
 
   environment.systemPackages = [
     pkgs.git
@@ -22,8 +26,33 @@
     lib.genAttrs host.users
     (username: user: {
       isNormalUser = true |> lib.mkDefault;
-      initialPassword = "" |> lib.mkDefault;
-    });
+      initialPassword = username |> lib.mkDefault;
+    })
+    // {
+      root.initialPassword = "root" |> lib.mkDefault;
+    };
+
+  environment.persistence."/persist" = {
+    hideMounts = true |> lib.mkDefault;
+
+    directories = [
+      "/etc/NetworkManager/system-connections" # network connections
+      "/var/lib/bluetooth" # bluetooth pairings
+
+      "/var/lib/nixos" # nixos state
+
+      "/var/log" # logs
+      "/var/lib/systemd/coredump" # systemd crash dumps
+
+      "/var/lib/systemd/timers" # systemd timers
+
+      "/var/db/sudo"
+    ];
+
+    files = [
+      "/etc/machine-id"
+    ];
+  };
 
   services.dbus.implementation = "broker" |> lib.mkDefault;
 

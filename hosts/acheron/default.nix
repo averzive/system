@@ -20,6 +20,7 @@
 
     "${system}/desktop/hyprland"
 
+    ./disks.nix
     ./hardware.nix
   ];
 
