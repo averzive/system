@@ -34,8 +34,9 @@ in {
       portalPackage = hyprPackages.xdg-desktop-portal-hyprland |> lib.mkDefault;
     };
 
-    environment.systemPackages = [
-      pkgs.app2unit
+    environment.systemPackages = with pkgs; [
+      app2unit
+      kitty
     ];
   };
 
